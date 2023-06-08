@@ -48,9 +48,10 @@ const getPost = async (req, res) => {
 // create post
 const createPost = async (req, res) => {
   const user_id = req.user._id;
+  const user_mail = req.user.email;
   const data = await req.body;
   try {
-    const createdPost = await Post.create({ ...data, user_id });
+    const createdPost = await Post.create({ ...data, user_id, user_mail });
 
     res.status(201).json(createdPost);
   } catch (error) {

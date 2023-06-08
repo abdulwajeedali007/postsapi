@@ -16,7 +16,11 @@ const PostSchema = new mongoose.Schema(
     },
     user_id: {
       type: String,
-      require: true,
+      required: true,
+    },
+    user_mail: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

@@ -10,8 +10,9 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     const { _id } = jwt.verify(token, process.env.SECRET);
-
+    /*Important area to remember taking id&mailId of authorized loggedIn.*/
     req.user = await User.findOne({ _id }).select("_id");
+    req.user = await User.findOne({ _id }).select("email");
     next();
   } catch (error) {
     console.log(error);
